@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class BullsNCowsUtils {
 
@@ -38,7 +38,6 @@ public class BullsNCowsUtils {
     int position = 0;
 
     private void genAllThePossibilities(int digitPosition, String current) {
-
         if (digitPosition == Main.DIGIT_COUNT) {
             if (!hasRepeatingDigits(current)) {
                 allThePossiblities[position] = current;
@@ -53,12 +52,25 @@ public class BullsNCowsUtils {
         }
     }
 
+    public static void shufflePossibilities() {
+
+        List<String> list = new ArrayList<>(Arrays.asList(allThePossiblities));
+
+        Collections.shuffle(list);
+
+        for (int i = 0; i < list.size(); i++) {
+            allThePossiblities[i] = list.get(i);
+        }
+    }
+
     public static int games = 0, wins = 0, attempts;
     public static String computersGuess = ("");
     private boolean generated = false;
+    public static boolean giveUp;
 
     public void playGame(Challenger challenger, Guesser guesser)
     {
+        giveUp = false;
         Scanner scn = new Scanner(System.in);
 
         if(Main.gameType.equals("2")) {
@@ -72,14 +84,15 @@ public class BullsNCowsUtils {
                     eliminated[i] = false;
                 }
             }
+
+            shufflePossibilities();
         }
 
         do {
             challenger.thinkOfANumber(4);
         } while(hasRepeatingDigits(winningNumber));
 
-        System.out.println(winningNumber);
-        System.out.println("Hit Enter to begin...");
+        System.out.println("\nHit Enter to begin...");
 
         String Enter;
         Enter = scn.nextLine();
@@ -88,8 +101,18 @@ public class BullsNCowsUtils {
         do {
 
             guesser.makeAGuess();
-            if(guesser.getInput().equals("h")) {
-                // To-do: Insert Help here
+            if(guesser.getInput().equals("g") && Main.gameType.equals("1")) {
+                games ++;
+                System.out.println("You gave up.");
+                giveUp = true;
+                guesser.endGame();
+
+                if(guesser.getInput().equals("y") || guesser.getInput().equals("yes"))
+                    playGame(challenger, guesser);
+                else  if(guesser.getInput().equals("n") || guesser.getInput().equals("no") || guesser.getInput().equals("nope")){
+                    System.out.println("Bye! x)");
+                }
+                break;
             }
             else {
                 attempts ++;
@@ -104,7 +127,7 @@ public class BullsNCowsUtils {
                     if(guesser.getInput().equals("y") || guesser.getInput().equals("yes"))
                         playGame(challenger, guesser);
                     else  if(guesser.getInput().equals("n") || guesser.getInput().equals("no") || guesser.getInput().equals("nope")){
-                        System.out.println("Bye! x)");
+                        System.out.println("Bye!");
                     }
                     break;
                 } else {

@@ -10,10 +10,11 @@ public class Main {
         Scanner scn = new Scanner(System.in);
 
         System.out.println(
-                "Welcome to Bulls and Cows! Type \"help\" for [H]elp, anytime.\n\n" +
-               "Choose Game Type:\n" +
-               "[1] The Computer thinks of a number, you have to guess it.\n" +
-               "[2] You think of a number, the Computer has to guess it.\n");
+                "Welcome to Bulls and Cows!\n\n" +
+                        "Made with love at 4am on SAP Geeky Camp 5.0.\n\n" +
+                        "Choose Game Type:\n" +
+                        "[1] The Computer thinks of a number, you have to guess it.\n" +
+                        "[2] You think of a number, the Computer has to guess it.\n");
 
         BullsNCowsUtils game = new BullsNCowsUtils();
 
@@ -21,7 +22,7 @@ public class Main {
         Challenger challenger;
 
         if(gameType.equals("1")) {
-            System.out.println("You have chosen Game Type 1.\n");
+            System.out.println("You have chosen Game Type 1.\nType G to [G]ive up during the game.");
             challenger = new ComputerChallenger();
             guesser = new UserGuesser();
         }

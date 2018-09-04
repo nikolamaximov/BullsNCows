@@ -26,7 +26,7 @@ public class ComputerGuesser implements Guesser {
     }
 
     public void endGame() {
-        System.out.println("\nHaa! The Computer guessed your number right.\n\nPlay again? [Y]es/[N]ope");
+        System.out.println("\nThe Computer guessed your number right with " + BullsNCowsUtils.attempts + " attempts.\n\nPlay again? [Y]es/[N]ope");
         Scanner scn = new Scanner(System.in);
         input = (scn.nextLine()).toLowerCase();
     }

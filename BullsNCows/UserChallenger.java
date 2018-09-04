@@ -19,9 +19,9 @@ public class UserChallenger implements Challenger {
 
         System.out.println(
                 "Now you have to think of a number that the Computer will try to guess.\n" +
-                "When you're done, hit Enter.\n" +
-                "Tip: ... and try not to forget the number, okay?\n" +
-                "Note: it has to be made up of different digits.\n");
+                        "When you're done, hit Enter.\n" +
+                        "Tip: ... and try not to forget the number, okay?\n" +
+                        "Note: it has to be made up of different digits.\n");
     }
 
     public void calculateBullsNCows(int digCount) {
@@ -57,8 +57,8 @@ public class UserChallenger implements Challenger {
 
         System.out.print("Bulls: ");
         if(bulls != 0)
-            System.out.print(bulls + " ");
-        else System.out.print("none ");
+            System.out.print(bulls + "; ");
+        else System.out.print("none; ");
 
         System.out.print("Cows: ");
         if(cows != 0)
