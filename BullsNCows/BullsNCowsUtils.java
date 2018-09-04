@@ -13,7 +13,7 @@ public class BullsNCowsUtils {
 
     private static String guess;
 
-    public static String getGuess(){
+    static String getGuess(){
         return guess;
     }
     public static void setGuess(String value){
@@ -33,9 +33,9 @@ public class BullsNCowsUtils {
         return false;
     }
 
-    public static String[] allThePossiblities = new String[Main.POSSIBILITIES_COUNT];
-    public static boolean[] eliminated = new boolean[Main.POSSIBILITIES_COUNT];
-    int position = 0;
+    static String[] allThePossiblities = new String[Main.POSSIBILITIES_COUNT];
+    static boolean[] eliminated = new boolean[Main.POSSIBILITIES_COUNT];
+    private int position = 0;
 
     private void genAllThePossibilities(int digitPosition, String current) {
         if (digitPosition == Main.DIGIT_COUNT) {
@@ -52,7 +52,7 @@ public class BullsNCowsUtils {
         }
     }
 
-    public static void shufflePossibilities() {
+    private static void shufflePossibilities() {
 
         List<String> list = new ArrayList<>(Arrays.asList(allThePossiblities));
 
@@ -63,12 +63,12 @@ public class BullsNCowsUtils {
         }
     }
 
-    public static int games = 0, wins = 0, attempts;
-    public static String computersGuess = ("");
+    static int games = 0, wins = 0, attempts;
+    static String computersGuess = ("");
     private boolean generated = false;
-    public static boolean giveUp;
+    static boolean giveUp;
 
-    public void playGame(Challenger challenger, Guesser guesser)
+    void playGame(Challenger challenger, Guesser guesser)
     {
         giveUp = false;
         Scanner scn = new Scanner(System.in);

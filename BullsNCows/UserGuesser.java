@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class UserGuesser implements Guesser {
 
-    public String input;
+    private String input;
 
     @Override
     public String getInput() {
